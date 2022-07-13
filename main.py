@@ -63,8 +63,8 @@ def sending():
     global sending_web_driver
     while True:
         if all_responses.len() > 0:
-            contact_id, response_content = all_responses.pop()
-            send_message_by_contact_name(sending_web_driver, contact_id, response_content)
+            contact_id, responses_list = all_responses.pop()
+            send_message_by_contact_name(sending_web_driver, contact_id, responses_list)
             navigate_in_page.return_to_default(sending_web_driver)
         sleep(0.5)
 

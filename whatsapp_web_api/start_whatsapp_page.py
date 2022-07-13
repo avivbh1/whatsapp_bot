@@ -1,5 +1,6 @@
 from selenium import webdriver
 from bs4 import BeautifulSoup
+from constants import constants
 
 
 def start_home_whatsapp_page():
@@ -7,22 +8,19 @@ def start_home_whatsapp_page():
 
     :return: the html source of the whatsapp web home page
     """
-    url = "https://web.whatsapp.com/"
-
-    driver = webdriver.Chrome(r"C:\Users\avivb\PycharmProjects\whatsapp_bot\chromedriver.exe")
-    driver.get(url)
+    driver = webdriver.Chrome(constants.CHROME_DRIVER_PATH)
+    driver.get(constants.WHATSAPP_WEB_URL)
 
     input("click enter after scanning the QR:")
 
     return driver
 
 
-def get_current_html_document_of_source_page(driver):
+def get_current_html_document_of_source_page(html):
     """
     returns the html of the current page_source (in type str)
-    :param driver:
+    :param html:
     :return: driver.page_source (str type)
     """
 
-    return BeautifulSoup(driver.page_source, "html.parser")
-
+    return BeautifulSoup(html, "html.parser")

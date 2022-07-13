@@ -1,0 +1,4 @@
+pip install selenium
+selenium~=4.3.0
+bs4~=0.0.1
+beautifulsoup4~=4.11.1
