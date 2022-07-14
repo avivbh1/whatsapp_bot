@@ -1,0 +1,2 @@
+!translate <source language> <result language> <sentence to translate>
+example: !translate english hebrew hello world

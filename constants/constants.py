@@ -10,3 +10,5 @@ DEFAULT_CHAT_XPATH = f"//span[@title='עדן ארגנאוז']"  # the xpath of t
 ALL_MESSAGES_CLASSES = ["_2wUmf message-in focusable-list-item", ""]
 CHROME_DRIVER_PATH = r"C:\Users\avivb\PycharmProjects\whatsapp_bot\chromedriver.exe"
 WHATSAPP_WEB_URL = "https://web.whatsapp.com/"
+CLASS_NAME_OF_TRANSLATED_SENTENCE = "Q4iAWc"
+LANGUAGES_DB_PATH = "languages.db"
