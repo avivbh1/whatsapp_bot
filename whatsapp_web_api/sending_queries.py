@@ -2,6 +2,7 @@ from typing import List
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from time import sleep
 
 from constants import constants
 from navigate_in_page import navigate_in_page
@@ -19,6 +20,7 @@ def send_message_by_contact_name(driver: webdriver, contact_id: str, list_of_res
     msg_box = driver.find_element(By.XPATH, constants.MSG_BOX_RELATABLE_XPATH)  #
 
     for response in list_of_responses:
+        sleep(0.2)
         msg_box.send_keys(response)
         send_button = driver.find_element(By.XPATH, constants.SEND_BUTTON_XPATH)  # after we send the msg to the msg box we can locate the send button
         send_button.click()

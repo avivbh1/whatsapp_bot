@@ -10,7 +10,7 @@ from constants.my_queue import Queue
 from analyze_responses.translation import set_language_db
 
 
-def receiving(html_document):
+def receive(html_document):
     global income_messages, receiving_web_driver
     contact_boxes = get_all_user_box_objects(html_document)
 
@@ -31,7 +31,7 @@ def checking_for_changes():
         html = receiving_web_driver.page_source
 
         if html != prev_html:
-            receiving(get_current_html_document_of_source_page(html))
+            receive(get_current_html_document_of_source_page(html))
         prev_html = html
         sleep(0.5)
 
@@ -41,7 +41,8 @@ def analyzing():
     while True:
         if income_messages.len() > 0:  # if there is a message to analyze
             contact_id, current_messages = income_messages.pop()
-            response_content = analyze_responses.analyze_response(current_messages)  # sending list of all the messages of contact
+            response_content = analyze_responses.analyze_response(
+                current_messages)  # sending list of all the messages of contact
             response = [contact_id, response_content]
 
             all_responses.push(response)
