@@ -47,7 +47,6 @@ def is_translation_op_valid(message: str) -> bool:
     """
     if len(ALL_LANGUAGES) == 0:  # setting the languages list
         set_language_db()
-        print(ALL_LANGUAGES)
 
     op_sections = message.split(" ")
     if op_sections[0] == "!translate":

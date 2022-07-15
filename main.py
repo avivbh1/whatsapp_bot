@@ -1,12 +1,13 @@
-from time import sleep
+from colorama import Fore
 import threading
+from time import sleep
 
-from whatsapp_web_api.start_whatsapp_page import start_home_whatsapp_page, get_current_html_document_of_source_page
+from analyze_responses import analyze_responses
+from constants.my_queue import Queue
+from navigate_in_page import navigate_in_page
 from whatsapp_web_api.receiving_queries import get_all_user_box_objects, get_all_new_messages
 from whatsapp_web_api.sending_queries import send_message_by_contact_name
-from analyze_responses import analyze_responses
-from navigate_in_page import navigate_in_page
-from constants.my_queue import Queue
+from whatsapp_web_api.start_whatsapp_page import start_home_whatsapp_page, get_current_html_document_of_source_page
 
 
 def receive(html_document):
@@ -18,7 +19,9 @@ def receive(html_document):
     navigate_in_page.return_to_default(receiving_web_driver)
 
     for contact in contact_id_by_new_messages:
-        income_messages.push([contact, contact_id_by_new_messages[contact]])
+        new_messages = contact_id_by_new_messages[contact]
+        print(Fore.GREEN + f"{contact} just sent: {new_messages}\n")  # logger
+        income_messages.push([contact, new_messages])
     sleep(0.05)
 
 
@@ -44,6 +47,7 @@ def analyzing():
                 current_messages)  # sending list of all the messages of contact
             response = [contact_id, response_content]
 
+            print(Fore.RED + f"WE sending {contact_id}: {response_content}\n")
             all_responses.push(response)
         sleep(0.2)
 

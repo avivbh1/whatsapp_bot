@@ -16,8 +16,6 @@ def analyze_response(all_messages):
                 fixed_message += char
             else:
                 fixed_message += " "
-        print(fixed_message)
-        input("enter19:")
 
         """ checks if the operation is translation """
         if is_translation_op_valid(fixed_message):
