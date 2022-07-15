@@ -40,7 +40,8 @@ def get_new_messages_by_contact_id(driver, contact_id, num_of_new_messages):
     html_doc = BeautifulSoup(current_html_source, "html.parser")
 
     chat_frame = html_doc.find(["div"], attrs={"class": constants.CLASS_NAME_OF_CHAT_FRAME})
-    all_messages = chat_frame.find_all(["span"], class_=constants.CLASS_NAME_OF_MESSAGE_IN_CHAT)[::-1]  # from most to less recent
+    all_messages = chat_frame.find_all(["span"], class_=constants.CLASS_NAME_OF_MESSAGE_IN_CHAT)[
+                   ::-1]  # from most to less recent
 
     all_new_messages = []
     for i in range(num_of_new_messages):

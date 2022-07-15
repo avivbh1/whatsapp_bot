@@ -22,5 +22,6 @@ def send_message_by_contact_name(driver: webdriver, contact_id: str, list_of_res
     for response in list_of_responses:
         sleep(0.2)
         msg_box.send_keys(response)
-        send_button = driver.find_element(By.XPATH, constants.SEND_BUTTON_XPATH)  # after we send the msg to the msg box we can locate the send button
+        send_button = driver.find_element(By.XPATH,
+                                          constants.SEND_BUTTON_XPATH)  # after we send the msg to the msg box we can locate the send button
         send_button.click()

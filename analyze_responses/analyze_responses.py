@@ -1,5 +1,6 @@
 from analyze_responses.translation import is_translation_op_valid, get_translate
 from analyze_responses.utils import trim_message
+
 """
     all operation will be written without spaces.
 """

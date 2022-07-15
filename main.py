@@ -7,7 +7,6 @@ from whatsapp_web_api.sending_queries import send_message_by_contact_name
 from analyze_responses import analyze_responses
 from navigate_in_page import navigate_in_page
 from constants.my_queue import Queue
-from analyze_responses.translation import set_language_db
 
 
 def receive(html_document):
