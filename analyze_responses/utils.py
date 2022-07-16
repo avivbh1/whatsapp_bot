@@ -14,3 +14,5 @@ def trim_message(message):
         else:
             message = message[:-1]
     return message
+
+
