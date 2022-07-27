@@ -1,7 +1,6 @@
 from constants import constants
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from navigate_in_page import navigate_in_page
 
 
@@ -24,7 +23,7 @@ def get_contact_id(contact_box_html):
     """
     span_of_contact_name = contact_box_html.find(["span"],
                                                  attrs={"class": constants.CONTACT_ID_SPAN_CLASS_NAME, "title": True})
-    return span_of_contact_name.text
+    return span_of_contact_name['title']
 
 
 def get_new_messages_by_contact_id(driver, contact_id, num_of_new_messages):

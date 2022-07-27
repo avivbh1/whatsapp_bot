@@ -15,4 +15,12 @@ LANGUAGES_DB_PATH = r"C:\Users\avivb\PycharmProjects\whatsapp_bot\analyze_respon
 ADMIN = "Admin"
 ENABLE = "enable"
 DISABLE = "disable"
-
+ALL_OPERATIONS = "all operations"
+TAG_ALL_OP = "!tag all"
+ECHO_OP = "!echo"
+TRANSLATE_OP = "!translate"
+DEFAULT_PAGE_PATH = "https://google.com/"
+GOOGLE_TRANSLATE_PATH = "https://translate.google.co.il/"
+XPATH_OF_TRANSLATED_SENTENCE = "//span[@class='Q4iAWc']"
+FALSE_LANGUAGE_MSG = "*ROB ALERT - false language has been given*"
+TIMEOUT_ERROR_MSG = "*ROB ALERT - message timed out, please send again*"

@@ -8,16 +8,19 @@ from constants.my_queue import Queue
 from navigate_in_page import navigate_in_page
 from whatsapp_web_api.receiving_queries import get_all_user_box_objects, get_all_new_messages, get_contact_id
 from whatsapp_web_api.sending_queries import send_message_by_contact_name
-from whatsapp_web_api.start_whatsapp_page import start_home_whatsapp_page, get_current_html_document_of_source_page
+from whatsapp_web_api.start_chrome_page import start_chrome_page, get_current_html_document_of_source_page
 from analyze_responses.analyze_responses import set_all_operation_as_allow
 
 
-def clear_chats_while_offline(driver, contact_boxes):
+def clear_chats_while_offline(html, driver):
     """
     entering all chats in order to clear all the new messages spans.
     :param driver:
-    :param contact_boxes:
+    :param html: the html of the page
     """
+    html_doc = get_current_html_document_of_source_page(html)
+    contact_boxes = get_all_user_box_objects(html_doc)
+
     for current_contact_box in contact_boxes:
         """ iterates for each html-contact-box """
         span_of_new_message = current_contact_box.find(["span"], class_=constants.NEW_MESSAGE_SPAN_CLASS_NAME)
@@ -43,10 +46,14 @@ def receive(html_document):
 
 
 def checking_for_changes():
+    """
+    checking for changes in the whatsapp web page.
+    if so, it sends the new page html to the receive function to handle the changes
+    """
     global receiving_web_driver
     prev_html = receiving_web_driver.page_source  # getting the current state of the page
 
-    #clear_chats_while_offline(prev_html, receiving_web_driver)
+    clear_chats_while_offline(prev_html, receiving_web_driver)
 
     # and starting since then
     while True:
@@ -59,12 +66,15 @@ def checking_for_changes():
 
 
 def analyzing():
+    """
+    the analyzing function. activating as thread
+    """
     global income_messages
     while True:
         if income_messages.len() > 0:  # if there is a message to analyze
             contact_id, current_messages = income_messages.pop()
             # print(current_messages)
-            response_content = analyze_responses.analyze_response(
+            response_content = analyze_responses.analyze_response(analyze_web_driver,
                 contact_id, current_messages)  # sending list of all the messages of contact
             response = [contact_id, response_content]
 
@@ -74,6 +84,7 @@ def analyzing():
 
 
 def sending():
+    """ the sending function. activating as thread """
     global sending_web_driver
     while True:
         if all_responses.len() > 0:
@@ -95,8 +106,9 @@ def main():
 
 
 """ initializing the drivers """
-receiving_web_driver = start_home_whatsapp_page()
-sending_web_driver = start_home_whatsapp_page()
+receiving_web_driver = start_chrome_page(constants.WHATSAPP_WEB_URL)
+sending_web_driver = start_chrome_page(constants.WHATSAPP_WEB_URL)
+analyze_web_driver = start_chrome_page()
 
 """ initializing the main queues """
 income_messages = Queue()
