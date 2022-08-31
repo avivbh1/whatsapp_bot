@@ -16,3 +16,5 @@ All the possible commands for the users who contact the bot (more up to come)
 !disable <command>
 !enable all
 !disable all
+
+  note*: send each command after the bot responded to your last valid command
