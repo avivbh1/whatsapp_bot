@@ -8,7 +8,8 @@ All the possible commands for the users who contact the bot (more up to come)
 !translate [<language_dest>] <sentence>
 !translate <sentence>      // (Directly to en)
 
-
+exanple:
+  !translate [hebrew] Hello World!  ->  שלום עולם!
 ——-echo——-
 !echo <sentence>
 
