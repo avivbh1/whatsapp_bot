@@ -6,22 +6,20 @@ Run the app on your own computer while your whatsapp web is open on the same com
 and just by that, the bot is activated :) .
 
 ## Features
-* ——-translate——-
-!translate [<language_dest>] <sentence>
-!translate <sentence>      // (Directly to en)
+### Feature - translate
+* !translate [<language_dest>] <sentence>
+* !translate <sentence>    // (Directly to en)
 
-example:
-  !translate [hebrew] Hello World!  ->  שלום עולם!
-  
-* ——-echo——-
-!echo <sentence>
+* example: !translate [hebrew] Hello World!  ->  שלום עולם!
 
+### Feature - echo
+* !echo <sentence>
 
-* ——-Admin commands——-
-!enable <command>
-!disable <command>
-!enable all
-!disable all
+### Feature - for admin uses
+* !enable <command>
+* !disable <command>
+* !enable all
+* !disable all
 
 note*: send each command after the bot responded to your last valid command
 
